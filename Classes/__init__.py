@@ -1,4 +1,4 @@
-import personajes
-import puntos
-import movimiento
-import diseno
+import characters
+import points
+import movement
+import desing
