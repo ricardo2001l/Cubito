@@ -2,20 +2,16 @@ import pygame
 from pygame.locals import *
 from random import randint
 
-BLANCO = (255, 255, 255)
-VERDE = (76, 201, 34)
-AMARILLO = (217, 232, 53)
-GRIS = (185, 186, 176)
-NEGRO = (0, 0, 0)
+from Classes.resources import oldWidth, oldHeight
+from Classes.resources import width, height
 
-width = 1080
-height = 720
+
 
 def moveDown(object):
 	y = object.positionY
 	y += object.speed
 
-	if y >= height: 
+	if y >= height - object.heightChar : 
 		y -= object.speed
 
 	return y
@@ -24,7 +20,7 @@ def moveUp(object):
 	y = object.positionY
 	y -= object.speed
 
-	if y <= 0 + object.heightChar:
+	if y <= 0:
 		y += object.speed
 
 	return y
@@ -33,7 +29,7 @@ def moveRight(object):
 	x = object.positionX
 	x += object.speed
 
-	if x >= width:
+	if x >= width - object.widthChar:
 		x -= object.speed
 
 	return x	
@@ -41,7 +37,7 @@ def moveRight(object):
 def moveLeft(object):
 	x = object.positionX
 	x -= object.speed
-	if x <= 0 + object.widthChar: 
+	if x <= 0: 
 		x += object.speed
 
 	return x
@@ -103,8 +99,8 @@ def createObjects(surface, limit1, limit2, object, widthObj = 50, heightObj = 50
 	quantityObjects = randint(limit1, limit2)
 
 	for obj in range(quantityObjects):
-		posX = randint(0, width - widthObj)
-		posY = randint(0, height - heightObj)
+		posX = randint(0, oldWidth - widthObj)
+		posY = randint(0, oldHeight - heightObj)
 
 		newObject = object(surface, posX, posY)
 		listObjects.append(newObject)
@@ -124,7 +120,7 @@ def randomPos(object, farFromObj, range = 20):
 			(object.positionY >= farFromObj.positionY and \
 			object.positionY + range <= farFromObj.positionY):
 			
-			object.positionX = randint(object.widthChar , width)
-			object.positionY = randint(object.widthChar , height)
+			object.positionX = randint(object.widthChar , oldWidth)
+			object.positionY = randint(object.widthChar , oldHeight)
 
 		return object.positionX, object.positionY
