@@ -1,16 +1,7 @@
 import pygame
 from pygame.locals import *
 
-
-WHITE = (255, 255, 255)
-GREEN = (76, 201, 34)
-YELLOW = (217, 232, 53)
-GRAY = (185, 186, 176)
-LACK = (0, 0, 0)
-RED = (255, 0, 0)
-
-width = 1080
-height = 720
+from Classes.resources import GREEN, RED
 
 
 class Cubito(pygame.sprite.Sprite ):
@@ -27,15 +18,15 @@ class Cubito(pygame.sprite.Sprite ):
 		self.heightChar = heightChar
 		self.points = 0
 
-		self.rectangle = pygame.Rect(self.positionX, self.positionY, widthChar, heightChar)
 
+		self.rectangle = pygame.Rect(self.positionX, self.positionY, self.widthChar, self.heightChar)
 
 
 
 	def draw(self, surface, positionX, positionY):
 
 		self.rectangle.centerx = positionX
-		self.rectangle.centery = positionY  
+		self.rectangle.centery = positionY
 
 		centerX = self.widthChar / 2
 		centerY = self.heightChar / 2
